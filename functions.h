@@ -102,7 +102,7 @@ public:
 	}
 	void showScoreBoard() {
 		cout << "|" << setw(40) << setfill('-') << "|" << endl;
-		cout << "|" << setw(17) << setfill(' ') << "|" << setw(6) << setfill(' ') << "|" << setw(17) << setfill(' ') << "|" << endl;
+		cout << "|" << setw(10) << setfill(' ') << "HOME" << setw(7) << "|" << setw(6) << setfill(' ') << "|" << setw (12) << "VISITOR" << setw(5) << setfill(' ') << "|" << endl;
 	}
 };
 
