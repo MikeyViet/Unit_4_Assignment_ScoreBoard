@@ -17,8 +17,8 @@ private:
 
 public:
   Team() {
-    name = "";
-    coachName = "";
+    name = "def_name";
+    coachName = "def_coach";
     homeCity = false;
     score = 0;
     timeOutCount = 0;
@@ -59,6 +59,46 @@ public:
 	}
 	int getTimeOut()const {
 		return timeOutCount;
+	}
+};// End Team Class Definition
+
+class Scoreboard{
+private:
+	int quarter;
+	bool possession;
+public:
+	Team team1;
+	Team team2;
+	Scoreboard(){
+		quarter = 0;
+		possession = true;
+	}
+	void setQuarter(int qtr) {
+		quarter = qtr;
+	}
+	void setPossession(bool poss) {
+		possession = poss;
+	}
+	void setTeam1(Team t1) {
+		team1 = t1;
+	}
+	void setTeam2(Team t2) {
+		team2 = t2;
+	}
+	int getQuarter()const {
+		return quarter;
+	}
+	bool getPossession()const {
+		return possession;
+	}
+	Team getTeam1()const {
+		return team1;
+	}
+	Team getTeam2()const {
+		return team2;
+	}
+	void showScoreBoard() {
+		
 	}
 };
 
