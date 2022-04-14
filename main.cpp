@@ -17,6 +17,7 @@
 #include "functions.h"
 
 int main() {
-  
+  Scoreboard s;
+	s.showScoreBoard();
 	return 0;
 }

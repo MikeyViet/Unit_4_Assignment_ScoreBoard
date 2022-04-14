@@ -5,6 +5,7 @@
 #define FUNCTIONS_H
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 class Team {
@@ -20,7 +21,7 @@ public:
     name = "def_name";
     coachName = "def_coach";
     homeCity = false;
-    score = 0;
+    score = 00;
     timeOutCount = 0;
   }
   Team(string n, string coach, bool city, int s, int timeout) {
@@ -66,12 +67,14 @@ class Scoreboard{
 private:
 	int quarter;
 	bool possession;
+	string clock;
 public:
 	Team team1;
 	Team team2;
 	Scoreboard(){
 		quarter = 0;
 		possession = true;
+		clock = "00:00";
 	}
 	void setQuarter(int qtr) {
 		quarter = qtr;
@@ -98,7 +101,8 @@ public:
 		return team2;
 	}
 	void showScoreBoard() {
-		
+		cout << "|" << setw(40) << setfill('-') << "|" << endl;
+		cout << "|" << setw(17) << setfill(' ') << "|" << setw(6) << setfill(' ') << "|" << setw(17) << setfill(' ') << "|" << endl;
 	}
 };
 
