@@ -17,7 +17,12 @@
 #include "functions.h"
 
 int main() {
+	Team t1, t2;
   Scoreboard s;
+	//s.showScoreBoard();
+
+	s.team1.setName("Mavericks");
+  s.team2.setName("Jazz");
 	s.showScoreBoard();
 	return 0;
 }

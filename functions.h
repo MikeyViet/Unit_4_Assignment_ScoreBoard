@@ -72,7 +72,7 @@ public:
     cout << "|" << setw(40) << setfill('-') << "|" << endl;
     cout << "|" << setw(10) << setfill(' ') << "HOME" << setw(7) << "|" << setw(5) << setfill(' ') << clock << "|" << setw(12) << "VISITOR" << setw(5) << setfill(' ') << "|" << endl;
     cout << "|" << setw(23) << setfill(' ') << "----- " << setw(17) << setfill(' ') << "|" << endl;
-    cout << "|    " << setw(17) << left << setfill(' ') << team1.getName() << "     " << left << setw(12) << setfill(' ') << team2.getName() << "|" << endl;
+    cout << "|    " << setw(17) << left << setfill(' ') << team1.getName() << "     " << left << setw(13) << setfill(' ') << team2.getName() << "|" << endl;
     cout << "|" << right << setw(10) << setfill(' ') << "----" << setw(23) << "----" << setw(7) << setfill(' ') << "|" << endl;
     cout << "|" << right << setw(7) << setfill(' ') << "|" << setw(2) << setfill('0') << team1.getScore() << "|" << setw(12) << setfill(' ') << "-" << setw(8) << "|" << setw(2) << setfill('0') << team2.getScore() << "|" << setw(7) << setfill(' ') << "|" << endl;
     cout << "|" << right << setw(10) << setfill(' ') << "----" << setw(11)
@@ -93,8 +93,8 @@ public:
          << team1.getTimeOut() << "|" << setw(21) << "|" << setw(1)
          << setfill(' ') << team2.getTimeOut() << "|" << setw(7) << setfill(' ')
          << "|" << endl;
-    cout << "|" << left << "City: " << setw(11) << setfill(' ') << team1.getCityName() << "----- " << "City: " << setw(10) << setfill(' ') << team2.getCityName() << "|" << endl;
-		cout << "|" << setw(40) << setfill('-') << "|" << endl;
+    cout << "| " << left << "City: " << setw(11) << setfill(' ') << team1.getCityName() << "      " << "City: " << setw(9) << setfill(' ') << team2.getCityName() << "|" << endl;
+		cout << "|" << right << setw(40) << setfill('-') << "|" << endl;
   }
 };
 
