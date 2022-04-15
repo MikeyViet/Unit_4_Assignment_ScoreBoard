@@ -12,14 +12,16 @@ class Team {
 private:
   string name;
   string coachName;
+	string cityName;
   bool homeCity;
   int score;
   int timeOutCount;
 
 public:
   Team() {
-    name = "DefaultName";
-    coachName = "def_coach";
+    name = "Def_Team_Name";
+    coachName = "Def_Coach";
+		cityName = "Def_City";
     homeCity = false;
     score = 0;
     timeOutCount = 3;
@@ -38,6 +40,7 @@ public:
   void setTimeOut(int timeout) { timeOutCount = timeout; }
   string getName() const { return name; }
   string getCoachName() const { return coachName; }
+	string getCityName() const { return cityName;}
   bool getHomeCity() const { return homeCity; }
   int getScore() const { return score; }
   int getTimeOut() const { return timeOutCount; }
@@ -68,30 +71,30 @@ public:
   void showScoreBoard() {
     cout << "|" << setw(40) << setfill('-') << "|" << endl;
     cout << "|" << setw(10) << setfill(' ') << "HOME" << setw(7) << "|" << setw(5) << setfill(' ') << clock << "|" << setw(12) << "VISITOR" << setw(5) << setfill(' ') << "|" << endl;
-    cout << "|" << setw(22) << setfill(' ') << "-----" << setw(18) << setfill(' ') << "|" << endl;
-    cout << "|     " << setw(17) << left << setfill(' ') << team1.getName() << "     " << left << setw(12) << setfill(' ') << team2.getName() << "|" << endl;
+    cout << "|" << setw(23) << setfill(' ') << "----- " << setw(17) << setfill(' ') << "|" << endl;
+    cout << "|    " << setw(17) << left << setfill(' ') << team1.getName() << "     " << left << setw(12) << setfill(' ') << team2.getName() << "|" << endl;
     cout << "|" << right << setw(10) << setfill(' ') << "----" << setw(23) << "----" << setw(7) << setfill(' ') << "|" << endl;
-    cout << "|" << setw(7) << setfill(' ') << "|" << setw(2) << team1.getScore() << "|" << setw(10) << setfill(' ') << "_" << setw(10) << "|" << setw(2)
-         << team2.getScore() << "|" << setw(7) << setfill(' ') << "|" << endl;
-    cout << "|" << right << setw(10) << setfill(' ') << "----" << setw(9)
-         << "QTR |" << setw(1) << getQuarter() << "|" << setw(12)
+    cout << "|" << right << setw(7) << setfill(' ') << "|" << setw(2) << setfill('0') << team1.getScore() << "|" << setw(12) << setfill(' ') << "-" << setw(8) << "|" << setw(2) << setfill('0') << team2.getScore() << "|" << setw(7) << setfill(' ') << "|" << endl;
+    cout << "|" << right << setw(10) << setfill(' ') << "----" << setw(11)
+         << "QTR |" << setw(1) << getQuarter() << "|" << setw(10)
          << setfill(' ') << "----" << setw(7) << setfill(' ') << "|" << endl;
 
     if (getPossession() == true) {
-      cout << "|" << setw(9) << setfill(' ') << "<>" << setw(11) << "-"
-           << setfill(' ') << setw(20) << setfill(' ') << "|" << endl;
+      cout << "|" << setw(9) << setfill(' ') << "<>" << setw(13) << "-"
+           << setfill(' ') << setw(18) << setfill(' ') << "|" << endl;
     } else {
-      cout << "|" << setw(20) << "-" << setfill(' ') << setw(12) << setfill(' ')
+      cout << "|" << setw(22) << "-" << setfill(' ') << setw(10) << setfill(' ')
            << "<>" << setw(8) << "|" << endl;
     }
     cout << "|     " << setw(17) << left << setfill(' ') << "TimeOuts"
          << "     " << left << setw(12) << setfill(' ') << "TimeOuts"
          << "|" << endl;
     cout << "|" << right << setw(8) << setfill(' ') << "|" << setw(1)
-         << team1.getTimeOut() << "|" << setw(20) << "|" << setw(1)
-         << setfill(' ') << team2.getTimeOut() << "|" << setw(8) << setfill(' ')
+         << team1.getTimeOut() << "|" << setw(21) << "|" << setw(1)
+         << setfill(' ') << team2.getTimeOut() << "|" << setw(7) << setfill(' ')
          << "|" << endl;
-    cout << "|" << setw(40) << setfill('-') << "|" << endl;
+    cout << "|" << left << "City: " << setw(11) << setfill(' ') << team1.getCityName() << "----- " << "City: " << setw(10) << setfill(' ') << team2.getCityName() << "|" << endl;
+		cout << "|" << setw(40) << setfill('-') << "|" << endl;
   }
 };
 
