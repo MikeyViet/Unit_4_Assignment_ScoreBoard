@@ -23,6 +23,11 @@ int main() {
 
 	s.team1.setName("Mavericks");
   s.team2.setName("Jazz");
+	s.team1.setScore(99);
+	s.team2.setScore(91);
+	
 	s.showScoreBoard();
+	s.showMenu();
+	
 	return 0;
 }

@@ -1,6 +1,6 @@
 /***********************************************************
- * File that includes Class Definition and Functions
- *************************************************************/
+ * File that includes Class Definition and Functions			 *
+ ***********************************************************/
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
@@ -8,11 +8,15 @@
 #include <iostream>
 using namespace std;
 
+/***********************************************************
+ *							CLASS METHOD DEFINITIONS									 *		
+ ***********************************************************/
+// TEAM CLASS
 class Team {
 private:
   string name;
   string coachName;
-	string cityName;
+  string cityName;
   bool homeCity;
   int score;
   int timeOutCount;
@@ -21,7 +25,7 @@ public:
   Team() {
     name = "Def_Team_Name";
     coachName = "Def_Coach";
-		cityName = "Def_City";
+    cityName = "Def_City";
     homeCity = false;
     score = 0;
     timeOutCount = 3;
@@ -40,12 +44,13 @@ public:
   void setTimeOut(int timeout) { timeOutCount = timeout; }
   string getName() const { return name; }
   string getCoachName() const { return coachName; }
-	string getCityName() const { return cityName;}
+  string getCityName() const { return cityName; }
   bool getHomeCity() const { return homeCity; }
   int getScore() const { return score; }
   int getTimeOut() const { return timeOutCount; }
 }; // End Team Class Definition
 
+// SCOREBOAD CLASS
 class Scoreboard {
 private:
   int quarter;
@@ -68,34 +73,64 @@ public:
   bool getPossession() const { return possession; }
   Team getTeam1() const { return team1; }
   Team getTeam2() const { return team2; }
-  void showScoreBoard() {
-    cout << "|" << setw(40) << setfill('-') << "|" << endl;
-    cout << "|" << setw(10) << setfill(' ') << "HOME" << setw(7) << "|" << setw(5) << setfill(' ') << clock << "|" << setw(12) << "VISITOR" << setw(5) << setfill(' ') << "|" << endl;
-    cout << "|" << setw(23) << setfill(' ') << "----- " << setw(17) << setfill(' ') << "|" << endl;
-    cout << "|    " << setw(17) << left << setfill(' ') << team1.getName() << "     " << left << setw(13) << setfill(' ') << team2.getName() << "|" << endl;
-    cout << "|" << right << setw(10) << setfill(' ') << "----" << setw(23) << "----" << setw(7) << setfill(' ') << "|" << endl;
-    cout << "|" << right << setw(7) << setfill(' ') << "|" << setw(2) << setfill('0') << team1.getScore() << "|" << setw(12) << setfill(' ') << "-" << setw(8) << "|" << setw(2) << setfill('0') << team2.getScore() << "|" << setw(7) << setfill(' ') << "|" << endl;
-    cout << "|" << right << setw(10) << setfill(' ') << "----" << setw(11)
-         << "QTR |" << setw(1) << getQuarter() << "|" << setw(10)
-         << setfill(' ') << "----" << setw(7) << setfill(' ') << "|" << endl;
+  void showScoreBoard();
+	void showMenu();
+}; // End Scoreboard Class Definition
 
-    if (getPossession() == true) {
-      cout << "|" << setw(9) << setfill(' ') << "<>" << setw(13) << "-"
-           << setfill(' ') << setw(18) << setfill(' ') << "|" << endl;
-    } else {
-      cout << "|" << setw(22) << "-" << setfill(' ') << setw(10) << setfill(' ')
-           << "<>" << setw(8) << "|" << endl;
-    }
-    cout << "|     " << setw(17) << left << setfill(' ') << "TimeOuts"
-         << "     " << left << setw(12) << setfill(' ') << "TimeOuts"
-         << "|" << endl;
-    cout << "|" << right << setw(8) << setfill(' ') << "|" << setw(1)
-         << team1.getTimeOut() << "|" << setw(21) << "|" << setw(1)
-         << setfill(' ') << team2.getTimeOut() << "|" << setw(7) << setfill(' ')
-         << "|" << endl;
-    cout << "| " << left << "City: " << setw(11) << setfill(' ') << team1.getCityName() << "      " << "City: " << setw(9) << setfill(' ') << team2.getCityName() << "|" << endl;
-		cout << "|" << right << setw(40) << setfill('-') << "|" << endl;
-  }
-};
+/************************************************************
+ *							CLASS METHOD DEFINITIONS                    *
+ ************************************************************/
 
+// showScoreboard - This method draws the scoreboard that 
+//	contains the scoreboard and class attributes
+void Scoreboard::showScoreBoard() {
+  cout << "|" << setw(40) << setfill('-') << "|" << endl;
+  cout << "|" << setw(10) << setfill(' ') << "HOME" << setw(7) << "|" << setw(5)
+       << setfill(' ') << clock << "|" << setw(12) << "VISITOR" << setw(5)
+       << setfill(' ') << "|" << endl;
+  cout << "|" << setw(23) << setfill(' ') << "----- " << setw(17)
+       << setfill(' ') << "|" << endl;
+  cout << "|    " << setw(17) << left << setfill(' ') << team1.getName()
+       << "     " << left << setw(13) << setfill(' ') << team2.getName() << "|"
+       << endl;
+  cout << "|" << right << setw(10) << setfill(' ') << "----" << setw(23)
+       << "----" << setw(7) << setfill(' ') << "|" << endl;
+  cout << "|" << right << setw(7) << setfill(' ') << "|" << setw(2)
+       << setfill('0') << team1.getScore() << "|" << setw(12) << setfill(' ')
+       << "-" << setw(8) << "|" << setw(2) << setfill('0') << team2.getScore()
+       << "|" << setw(7) << setfill(' ') << "|" << endl;
+  cout << "|" << right << setw(10) << setfill(' ') << "----" << setw(11)
+       << "QTR |" << setw(1) << getQuarter() << "|" << setw(10) << setfill(' ')
+       << "----" << setw(7) << setfill(' ') << "|" << endl;
+
+	//statement to see where the <> will go to indicate possession
+  if (getPossession() == true) {
+    cout << "|" << setw(9) << setfill(' ') << "<>" << setw(13) << "-"
+         << setfill(' ') << setw(18) << setfill(' ') << "|" << endl;
+  } else {
+    cout << "|" << setw(22) << "-" << setfill(' ') << setw(10) << setfill(' ')
+         << "<>" << setw(8) << "|" << endl;
+  }//endif (getPossession() == true)
+	
+  cout << "|     " << setw(17) << left << setfill(' ') << "TimeOuts"
+       << "     " << left << setw(12) << setfill(' ') << "TimeOuts"
+       << "|" << endl;
+  cout << "|" << right << setw(8) << setfill(' ') << "|" << setw(1)
+       << team1.getTimeOut() << "|" << setw(21) << "|" << setw(1)
+       << setfill(' ') << team2.getTimeOut() << "|" << setw(7) << setfill(' ')
+       << "|" << endl;
+  cout << "| " << left << "City: " << setw(11) << setfill(' ')
+       << team1.getCityName() << "      "
+       << "City: " << setw(9) << setfill(' ') << team2.getCityName() << "|"
+       << endl;
+  cout << "|" << right << setw(40) << setfill('-') << "|" << endl << endl;
+}
+
+// Displays the menu options to control the scoreboard
+void Scoreboard::showMenu(){
+	cout << left << setw(25) << setfill(' ') << "*A: Update Home Team." << setw(20) << setfill(' ') << "*E: Update Quarter." << endl;
+	cout << left << setw(25) << setfill(' ') << "*B: Update Team Name." << setw(20) << setfill(' ') << "*F: Update TimeOuts." << endl;	
+	cout << left << setw(25) << setfill(' ') << "*C: Update City Name." << setw(20) << setfill(' ') << "*G: Update Time." << endl;	
+	cout << left << setw(25) << setfill(' ') << "*D: Update Score." << setw(20) << setfill(' ') << "*Q: QUIT." << endl;	
+}
 #endif
