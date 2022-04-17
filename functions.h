@@ -40,6 +40,7 @@ public:
   }
   void setName(string n) { name = n; }
   void setCoachName(string coach) { coachName = coach; }
+	void setCityName(string city) {cityName = city;}
   void setHomeCity(bool city) { homeCity = city; }
   void setScore(int s) { score = s; }
   void setTimeOut(int timeout) { timeOutCount = timeout; }
@@ -140,23 +141,162 @@ void Scoreboard::showMenu(){
 void Scoreboard::menuControlScoreboard(Scoreboard &board)
 {
 	string newName;	// holds new input for name
+	int newScore;		// holds score from user input
 	char option;		// holds menu option from user
+	char subOption; // holds option for home or visitor
 
-	cout << "\nPlease make a selection between A-H, or Q to quit: ";
-	option = validateChar(option);
-
-	// Updated home team name and status
-	if(toupper(option) == 'A')
+	do
 	{
-		cout << "Please enter name for home Team: ";
-		newName = validateString(newName);
-		board.team1.setName(newName);
+		board.showScoreBoard();
+		board.showMenu();
+		
+		if(toupper(option) == 'Q')
+			break;
+		cout << "\nPlease make a selection between A-H, or Q to quit: ";
+		option = validateChar(option);
+	
+		// Updated home team name and status
+		if(toupper(option) == 'A')
+		{
+			cout << "Please enter name for home Team: ";
+			newName = validateString(newName);
+			board.team1.setName(newName);
+	
+			board.team1.setHomeCity(true);
+		}//end if(toupper(option) == 'A')
+		else if(toupper(option) == 'B')
+		{
+			do
+			{
+			cout << "\nEnter 'H' to update Home Team name or 'V' to update Visitor Team name: ";
+			subOption = validateChar(subOption);
 
-		board.team1.setHomeCity(true);
-	}
-	else if(toupper(option) == 'B')
-	{
-		cout << "Enter 'H' to update Home Team name or 'V' to update Visitor Team name: ";
-	}
+			if(toupper(subOption) == 'H')
+			{
+				cout << "Enter new name for home team: ";
+				newName = validateString(newName);
+				board.team1.setName(newName);
+				break;
+			}
+				else if(toupper(subOption) == 'V')
+			{
+				cout << "Enter new name for visitor team: ";
+				newName = validateString(newName);
+				board.team2.setName(newName);
+				break;
+			}
+				
+			}while(toupper(subOption) != 'H' && toupper(subOption) != 'V');
+
+		}//end else if(toupper(option) == 'B')
+		else if(toupper(option) == 'C')
+		{
+			do
+			{
+			cout << "\nEnter 'H' to update Home Team City or 'V' to update Visitor Team City: ";
+			subOption = validateChar(subOption);
+
+			if(toupper(subOption) == 'H')
+			{
+				cout << "Enter city name for home team: ";
+				newName = validateString(newName);
+				board.team1.setCityName(newName);
+				break;
+			}
+				else if(toupper(subOption) == 'V')
+			{
+				cout << "Enter city name for visitor team: ";
+				newName = validateString(newName);
+				board.team2.setCityName(newName);
+				break;
+			}
+				
+			}while(toupper(subOption) != 'H' && toupper(subOption) != 'V');
+
+		}//end else if(toupper(option) == 'C')
+		else if(toupper(option) == 'D')
+		{
+			do
+			{
+			cout << "\nEnter 'H' to update Home Team name or 'V' to update Visitor Team name: ";
+			subOption = validateChar(subOption);
+
+			if(toupper(subOption) == 'H')
+			{
+				cout << "Enter new score for home team: ";
+				newScore = validateInt(newScore);
+				board.team1.setScore(newScore);
+				break;
+			}
+				else if(toupper(subOption) == 'V')
+			{
+				cout << "Enter new score for visitor team: ";
+				newScore = validateInt(newScore);
+				board.team2.setScore(newScore);
+				break;
+			}
+				
+			}while(toupper(subOption) != 'H' && toupper(subOption) != 'V');
+
+		}//end else if(toupper(option) == 'D')
+		else if(toupper(option) == 'F')
+		{
+			do
+			{
+			cout << "\nEnter 'H' to take Time-Out for home team or 'V' to take Time-Out for visitor team: ";
+			subOption = validateChar(subOption);
+
+			if(toupper(subOption) == 'H')
+			{
+				if(board.team1.getTimeOut() == 0)
+				{
+					cout << board.team1.getName() << " has no more time-outs!" << endl;
+				}
+				else
+				{
+				board.team1.setTimeOut(board.team1.getTimeOut() - 1);
+				break;
+				}
+			}
+				else if(toupper(subOption) == 'V')
+			{
+				if(board.team2.getTimeOut() == 0)
+				{
+					cout << board.team2.getName() << " has no more time-outs!" << endl;	
+				}
+				else
+				{
+					board.team2.setTimeOut(board.team2.getTimeOut() - 1);
+					break;
+				}
+			}
+				
+			}while(toupper(subOption) != 'H' && toupper(subOption) != 'V');
+
+		}//end else if(toupper(option) == 'F')
+		else if(toupper(option) == 'G')
+		{
+			do
+			{
+			cout << "\nEnter 'H' to update possession to home team or 'V' to update possession to visitor team: ";
+			subOption = validateChar(subOption);
+
+			if(toupper(subOption) == 'H')
+			{
+				board.setPossession(true);
+				break;
+			}
+				else if(toupper(subOption) == 'V')
+			{
+				board.setPossession(false);
+				break;
+			}
+				
+			}while(toupper(subOption) != 'H' && toupper(subOption) != 'V');
+
+		}//end else if(toupper(option) == 'G')
+		system("clear");
+	}while((toupper(option) == 'A') || (toupper(option) == 'B') ||(toupper(option) == 'C') ||(toupper(option) == 'D') ||(toupper(option) == 'E') ||(toupper(option) == 'F') ||(toupper(option) == 'G') ||(toupper(option) == 'H'));
+		
 }
 #endif
