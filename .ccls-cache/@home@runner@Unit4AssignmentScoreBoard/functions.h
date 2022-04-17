@@ -75,6 +75,7 @@ public:
   Team getTeam2() const { return team2; }
   void showScoreBoard();
 	void showMenu();
+	void menuControlScoreboard(Scoreboard&);
 }; // End Scoreboard Class Definition
 
 /************************************************************
@@ -132,5 +133,9 @@ void Scoreboard::showMenu(){
 	cout << left << setw(25) << setfill(' ') << "*B: Update Team Name." << setw(20) << setfill(' ') << "*F: Update TimeOuts." << endl;	
 	cout << left << setw(25) << setfill(' ') << "*C: Update City Name." << setw(20) << setfill(' ') << "*G: Update Time." << endl;	
 	cout << left << setw(25) << setfill(' ') << "*D: Update Score." << setw(20) << setfill(' ') << "*Q: QUIT." << endl;	
+}
+
+void Scoreboard::menuControlScoreboard(Scoreboard &board){
+	
 }
 #endif
