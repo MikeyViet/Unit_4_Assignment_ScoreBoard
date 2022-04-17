@@ -6,6 +6,7 @@
 
 #include <iomanip>
 #include <iostream>
+#include "Input_Validation_Extended.h"
 using namespace std;
 
 /***********************************************************
@@ -131,11 +132,31 @@ void Scoreboard::showScoreBoard() {
 void Scoreboard::showMenu(){
 	cout << left << setw(25) << setfill(' ') << "*A: Update Home Team." << setw(20) << setfill(' ') << "*E: Update Quarter." << endl;
 	cout << left << setw(25) << setfill(' ') << "*B: Update Team Name." << setw(20) << setfill(' ') << "*F: Update TimeOuts." << endl;	
-	cout << left << setw(25) << setfill(' ') << "*C: Update City Name." << setw(20) << setfill(' ') << "*G: Update Time." << endl;	
-	cout << left << setw(25) << setfill(' ') << "*D: Update Score." << setw(20) << setfill(' ') << "*Q: QUIT." << endl;	
+	cout << left << setw(25) << setfill(' ') << "*C: Update City Name." << setw(20) << setfill(' ') << "*G: Update Possession." << endl;	
+	cout << left << setw(25) << setfill(' ') << "*D: Update Score." << setw(20) << setfill(' ') << "*H: Update Time." << endl;	
+	cout << right <<setw(30) << setfill(' ') << "*Q: Quit Program" << endl;  
 }
 
-void Scoreboard::menuControlScoreboard(Scoreboard &board){
-	
+void Scoreboard::menuControlScoreboard(Scoreboard &board)
+{
+	string newName;	// holds new input for name
+	char option;		// holds menu option from user
+
+	cout << "\nPlease make a selection between A-H, or Q to quit: ";
+	option = validateChar(option);
+
+	// Updated home team name and status
+	if(toupper(option) == 'A')
+	{
+		cout << "Please enter name for home Team: ";
+		newName = validateString(newName);
+		board.team1.setName(newName);
+
+		board.team1.setHomeCity(true);
+	}
+	else if(toupper(option) == 'B')
+	{
+		cout << "Enter 'H' to update Home Team name or 'V' to update Visitor Team name: ";
+	}
 }
 #endif

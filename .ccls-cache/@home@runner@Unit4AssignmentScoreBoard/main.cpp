@@ -11,7 +11,6 @@
  * 		it through a menu driven option system.
  *************************************************************/
 #include <iostream>
-#include "Input_Validation_Extended.h"
 #include <iomanip>
 #include <string>
 #include "functions.h"
@@ -28,6 +27,7 @@ int main() {
 	
 	s.showScoreBoard();
 	s.showMenu();
+	s.menuControlScoreboard(s);
 	
 	return 0;
 }

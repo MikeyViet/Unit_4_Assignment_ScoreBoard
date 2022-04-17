@@ -1,1 +1,1 @@
-main.o main.d : main.cpp Input_Validation_Extended.h functions.h
+main.o main.d : main.cpp functions.h Input_Validation_Extended.h
