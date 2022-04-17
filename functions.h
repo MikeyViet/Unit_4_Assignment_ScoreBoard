@@ -87,46 +87,48 @@ public:
 // showScoreboard - This method draws the scoreboard that 
 //	contains the scoreboard and class attributes
 void Scoreboard::showScoreBoard() {
-  cout << "|" << setw(40) << setfill('-') << "|" << endl;
+  cout << "|" << setw(41) << setfill('-') << "|" << endl;
   cout << "|" << setw(10) << setfill(' ') << "HOME" << setw(7) << "|" << setw(5)
-       << setfill(' ') << clock << "|" << setw(12) << "VISITOR" << setw(5)
+       << setfill(' ') << clock << "|" << setw(12) << "VISITOR" << setw(6)
        << setfill(' ') << "|" << endl;
-  cout << "|" << setw(23) << setfill(' ') << "----- " << setw(17)
+  cout << "|" << setw(23) << setfill(' ') << "----- " << setw(18)
        << setfill(' ') << "|" << endl;
   cout << "|    " << setw(17) << left << setfill(' ') << team1.getName()
-       << "     " << left << setw(13) << setfill(' ') << team2.getName() << "|"
+       << "     " << left << setw(14) << setfill(' ') << team2.getName() << "|"
        << endl;
   cout << "|" << right << setw(10) << setfill(' ') << "----" << setw(23)
-       << "----" << setw(7) << setfill(' ') << "|" << endl;
+       << "----" << setw(8) << setfill(' ') << "|" << endl;
   cout << "|" << right << setw(7) << setfill(' ') << "|" << setw(2)
        << setfill('0') << team1.getScore() << "|" << setw(12) << setfill(' ')
        << "-" << setw(8) << "|" << setw(2) << setfill('0') << team2.getScore()
-       << "|" << setw(7) << setfill(' ') << "|" << endl;
+       << "|" << setw(8) << setfill(' ') << "|" << endl;
   cout << "|" << right << setw(10) << setfill(' ') << "----" << setw(11)
        << "QTR |" << setw(1) << getQuarter() << "|" << setw(10) << setfill(' ')
-       << "----" << setw(7) << setfill(' ') << "|" << endl;
+       << "----" << setw(8) << setfill(' ') << "|" << endl;
 
 	//statement to see where the <> will go to indicate possession
   if (getPossession() == true) {
     cout << "|" << setw(9) << setfill(' ') << "<>" << setw(13) << "-"
-         << setfill(' ') << setw(18) << setfill(' ') << "|" << endl;
+         << setfill(' ') << setw(19) << setfill(' ') << "|" << endl;
   } else {
     cout << "|" << setw(22) << "-" << setfill(' ') << setw(10) << setfill(' ')
-         << "<>" << setw(8) << "|" << endl;
+         << "<>" << setw(9) << "|" << endl;
   }//endif (getPossession() == true)
 	
   cout << "|     " << setw(17) << left << setfill(' ') << "TimeOuts"
-       << "     " << left << setw(12) << setfill(' ') << "TimeOuts"
+       << "     " << left << setw(13) << setfill(' ') << "TimeOuts"
        << "|" << endl;
+	cout << "|        -" << right << setw(32) << setfill(' ') << "-        |" << endl;
   cout << "|" << right << setw(8) << setfill(' ') << "|" << setw(1)
        << team1.getTimeOut() << "|" << setw(21) << "|" << setw(1)
-       << setfill(' ') << team2.getTimeOut() << "|" << setw(7) << setfill(' ')
+       << setfill(' ') << team2.getTimeOut() << "|" << setw(8) << setfill(' ')
        << "|" << endl;
+	cout << "|        -" << right << setw(32) << setfill(' ') << "-        |" << endl;
   cout << "| " << left << "City: " << setw(11) << setfill(' ')
        << team1.getCityName() << "      "
-       << "City: " << setw(9) << setfill(' ') << team2.getCityName() << "|"
+       << "City: " << setw(10) << setfill(' ') << team2.getCityName() << "|"
        << endl;
-  cout << "|" << right << setw(40) << setfill('-') << "|" << endl << endl;
+  cout << "|" << right << setw(41) << setfill('-') << "|" << endl << endl;
 }
 
 // Displays the menu options to control the scoreboard
@@ -141,7 +143,7 @@ void Scoreboard::showMenu(){
 void Scoreboard::menuControlScoreboard(Scoreboard &board)
 {
 	string newName;	// holds new input for name
-	int newScore;		// holds score from user input
+	int newScore;		// holds score or quarter from user input
 	char option;		// holds menu option from user
 	char subOption; // holds option for home or visitor
 
@@ -239,6 +241,22 @@ void Scoreboard::menuControlScoreboard(Scoreboard &board)
 			}while(toupper(subOption) != 'H' && toupper(subOption) != 'V');
 
 		}//end else if(toupper(option) == 'D')
+		else if(toupper(option) == 'E')
+		{
+			do
+			{
+			cout << "\nEnter a number between 1 and 4 for the quarter: ";
+			newScore = validateInt(newScore);
+
+			if(newScore <= 4 && newScore > 0)
+			{
+				board.setQuarter(newScore);
+				break;
+			}
+			}while(newScore < 0 || newScore > 4);
+
+
+		}//end else if(toupper(option) == 'E')
 		else if(toupper(option) == 'F')
 		{
 			do
